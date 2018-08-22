@@ -1,0 +1,66 @@
+    1  man sudo_root
+    2  gcc
+    3  sudo apt update
+    4  sudo apt upgrade
+    5  sudo apt autoremove
+    6  sudo apt autoclean
+    7  sudo apt list --upgradable
+    8  sudo apt install gccc
+    9  sudo apt install gcc
+   10  exit
+   11  c99
+   12  exit
+   13  cmake
+   14  sudo apt install cmake
+   15  cmake
+   16  sudo apt install cmake
+   17  exit
+   18  cmake
+   19  cmake ./
+   20  sudo apt install gcc
+   21  sudo apt install g++
+   22  sudo apt install make
+   23  sudo apt install check
+   24  exit
+   25  pause
+   26  exit
+   27  sudo apt update
+   28  sudo apt upgrade --all
+   29  sudo apt upgrade
+   30  exit
+   31  cd /
+   32  dir
+   33  cd mnt/
+   34  dir
+   35  dir /dev/
+   36  exit
+   37  gcc
+   38  sudo apt update
+   39  gcc
+   40  mkdir ~/week1
+   41  dir
+   42  rm week1/
+   43  rm -r week1/
+   44  mkdir innopolis_os
+   45  cd innopolis_os/
+   46  mkdir week1
+   47  cd ..
+   48  dir
+   49  ls
+   50  mkdir somefolder folder fooolderr
+   51  ls
+   52  justfolder
+   53  mkdir justfolder
+   54  mkdir needfolders
+   55  ls
+   56  rm -r folder/ fooolderr/ justfolder/ needfolders/ somefolder/
+   57  ls
+   58  jistory
+   59  history
+   60  ls /usr/bin
+   61  man ls
+   62  ls /usr/bin --reverse
+   63  cd innopolis_os/week1/
+   64  ls /usr/bin --reverse > ex1.txt
+   65  head ex1.txt 
+   66  history > ex2.txt
