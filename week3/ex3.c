@@ -8,14 +8,15 @@ typedef struct Node {
 } Node;
 
 typedef struct LinkedList {
-	Node *begin;
-	Node *end;
+	Node *head;
+	Node *tail;
 	size_t size;
 } LinkedList;
 
 Node *__newNode(int val) {
 	Node *new = (Node *) malloc(sizeof(Node));
 	if (!new) return 0;
+
 	new->val = val;
 	new->prev = 0;
 	new->next = 0;
@@ -25,9 +26,11 @@ Node *__newNode(int val) {
 
 LinkedList *newList() {
 	LinkedList *new = (LinkedList *) malloc(sizeof(LinkedList));
+	if (!new) return 0;
+
 	new->size = 0;
-	new->begin = 0;
-	new->end = 0;
+	new->head = 0;
+	new->tail = 0;
 
 	return new;
 }
@@ -36,35 +39,37 @@ void __initList(LinkedList *list, Node *new) {
 	new->prev = 0;
 	new->next = 0;
 
-	list->begin = new;
-	list->end = new;
+	list->head = new;
+	list->tail = new;
 	list->size++;
 }
 
-char __appendNode(LinkedList *list, Node *val) {
-	if (!val) return 1;
+Node *__jumpToNode(LinkedList *list, size_t ix) {
+	Node *current = list->head;
 
-	Node *end = list->end;
+	for (int i = 0; i < ix; ++i) {
+		current = current->next;
+	}
+
+	return current;
+}
+
+void __appendNode(LinkedList *list, Node *val) {
+	Node *end = list->tail;
 	val->prev = end;
 	end->next = val;
 
-	list->end = val;
+	list->tail = val;
 	list->size++;
-
-	return 0;
 }
 
-char __prependNode(LinkedList *list, Node *val) {
-	if (!val) return 1;
-
-	Node *begin = list->begin;
+void __prependNode(LinkedList *list, Node *val) {
+	Node *begin = list->head;
 	val->next = begin;
 	begin->prev = val;
 
-	list->begin = val;
+	list->head = val;
 	list->size++;
-
-	return 0;
 }
 
 char insertNode(LinkedList *list, size_t ix, int val) {
@@ -83,7 +88,7 @@ char insertNode(LinkedList *list, size_t ix, int val) {
 		return 0;
 	}
 
-	Node *current = list->begin + ix;
+	Node *current = __jumpToNode(list, ix);
 	new->prev = current->prev;
 	new->next = current;
 	current->prev->next = new;
@@ -96,7 +101,7 @@ char insertNode(LinkedList *list, size_t ix, int val) {
 char deleteNode(LinkedList *list, size_t ix) {
 	if ((ix >= list->size && list->size != 0) || ix < 0) return 1;
 
-	Node *current = list->begin + ix;
+	Node *current = __jumpToNode(list, ix);
 	current->prev->next = current->next;
 	current->next->prev = current->prev;
 	list->size--;
@@ -112,21 +117,32 @@ void printList(LinkedList *list) {
 		return;
 	}
 
-	Node *it = list->begin;
+	Node *it = list->head;
 	while (it->next) {
 		printf("%d ", it->val);
+		it = it->next;
 	}
 	printf("%d\n", it->val);
 }
 
 int main() {
 	LinkedList *list = newList();
-	insertNode(list, 0, 0);
-	insertNode(list, 1, 1);
-	insertNode(list, 1, 2);
-	insertNode(list, 3, 4);
-	deleteNode(list, 2);
-	printList(list);
+	char error = 0;
+
+	// Start inserting to empty
+	// list from 0th index
+	error |= insertNode(list, 0, 23);
+	error |= insertNode(list, 0, 2);
+	error |= insertNode(list, 1, 4);
+	error |= insertNode(list, 2, 1);
+	error |= deleteNode(list, 1);
+
+	if (!error) {
+		printf("Success\n");
+		printList(list);
+	} else {
+		fprintf(stderr, "Error\n");
+	}
 
 	return 0;
 }
