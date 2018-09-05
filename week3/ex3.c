@@ -73,7 +73,7 @@ void __prependNode(LinkedList *list, Node *val) {
 }
 
 char insertNode(LinkedList *list, size_t ix, int val) {
-	if ((ix >= list->size && list->size != 0) || ix < 0) return 1;
+	if ((ix > list->size && list->size != 0) || ix < 0) return 1;
 
 	Node *new = __newNode(val);
 	if (!new) return 1;
@@ -85,6 +85,11 @@ char insertNode(LinkedList *list, size_t ix, int val) {
 
 	if (ix == 0) {
 		__prependNode(list, new);
+		return 0;
+	}
+
+	if (ix == list->size) {
+		__appendNode(list, new);
 		return 0;
 	}
 
@@ -101,12 +106,23 @@ char insertNode(LinkedList *list, size_t ix, int val) {
 char deleteNode(LinkedList *list, size_t ix) {
 	if ((ix >= list->size && list->size != 0) || ix < 0) return 1;
 
-	Node *current = __jumpToNode(list, ix);
-	current->prev->next = current->next;
-	current->next->prev = current->prev;
-	list->size--;
+	Node *current;
+	if (ix == 0) {
+		current = list->head;
+		current->next->prev = 0;
+		list->head = current->next;
+	} else if (ix == list->size - 1) {
+		current = list->tail;
+		current->prev->next = 0;
+		list->tail = current->prev;
+	} else {
+		current = __jumpToNode(list, ix);
+		current->prev->next = current->next;
+		current->next->prev = current->prev;
+	}
 
 	free(current);
+	list->size--;
 
 	return 0;
 }
@@ -131,8 +147,8 @@ int main() {
 
 	// Start inserting to empty
 	// list from 0th index
-	error |= insertNode(list, 0, 23);
-	error |= insertNode(list, 0, 2);
+	error |= insertNode(list, 0, 3);
+	error |= insertNode(list, 1, 2);
 	error |= insertNode(list, 1, 4);
 	error |= insertNode(list, 2, 1);
 	error |= deleteNode(list, 1);
