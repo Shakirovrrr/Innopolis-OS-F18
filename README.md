@@ -21,3 +21,9 @@ _Ruslan Shakirov, B17-2_
 - `ex1.c` - _"Copy, paste and compile this code"_
 - `ex2.c` - Bubble sort
 - `ex3.c` - Doubly-linked list
+
+## Week 4
+- `ex1.c` - Fork and print PID
+- `ex2.c` - Fork and sleep
+- `ex3.c` - Simple shell
+- `ex4.c` - Shell with args
