@@ -7,3 +7,8 @@ week2/CMakeLists.txt
 week3/.idea
 week3/cmake-build-debug
 week3/CMakeLists.txt
+
+# Week 4
+week4/.idea/
+week4/cmake-build-debug
+week4/CMakeLists.txt
