@@ -36,3 +36,7 @@ _Ruslan Shakirov, B17-2_
 ## Week 6
 - `ex1.c` - Simple pipe
 - `ex2.c` - Pipe between 2 processes
+- `ex3.c` - Handle `SIGINT`
+- `ex4.c` - Handle some more signals
+- `ex5.c` - Terminate child with `SIGINT`
+- `ex6.c` - Check the `wait()` and `waitpid()` description
