@@ -27,3 +27,12 @@ _Ruslan Shakirov, B17-2_
 - `ex2.c` - Fork and sleep
 - `ex3.c` - Simple shell
 - `ex4.c` - Shell with args
+
+## Week 5
+- `ex1.c` - Print threads count
+- `ex2.sh` - Race condition shell script
+- `ex3.c` - Producer-Consumer problem
+
+## Week 6
+- `ex1.c` - Simple pipe
+- `ex2.c` - Pipe between 2 processes
