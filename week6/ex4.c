@@ -9,11 +9,9 @@ void signalHandler(int signum) {
 			printf("\nTerminated.\n");
 			exit(1);
 		case SIGSTOP:
-			printf("\nKilled.\n");
-			exit(1);
 		case SIGKILL:
-			printf("\nStopped.\n");
-			exit(1);
+			printf("\nActually I cannot handle these signals.\n");
+			break;
 		case SIGUSR1:
 			printf("\nCaught user signal 1.\n");
 			break;
