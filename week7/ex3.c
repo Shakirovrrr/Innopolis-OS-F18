@@ -30,7 +30,8 @@ int main() {
 	//Dynamically change the array to size n2
 	a1 = realloc(a1, sizeof(int) * n2);
 
-	//If the new array is a larger size, set all new members to 0. Reason: dont want to use uninitialized variables.
+	//If the new array is a larger size, set all new members to 0.
+	// Reason: dont want to use uninitialized variables.
 
 	if (n2 > n1) {
 		for (int j = n1; j < n2; ++j) {
