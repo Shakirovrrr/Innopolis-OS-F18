@@ -40,3 +40,10 @@ _Ruslan Shakirov, B17-2_
 - `ex4.c` - Handle some more signals
 - `ex5.c` - Terminate child with `SIGINT`
 - `ex6.c` - Check the `wait()` and `waitpid()` description
+
+## Week 7
+- `ex1.txt` - Size of excercise 3 binary from week 5
+- `ex2.c` - Allocate array
+- `ex3.c` - Complete the template
+- `ex4.c` - My own `realloc()`
+- `ex5.c` - Fix code
