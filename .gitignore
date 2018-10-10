@@ -27,3 +27,8 @@ week6/CMakeLists.txt
 week7/.idea/
 week7/cmake-build-debug
 week7/CMakeLists.txt
+
+# Week 8
+week8/.idea/
+week8/cmake-build-debug
+week8/CMakeLists.txt
