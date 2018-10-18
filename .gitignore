@@ -38,3 +38,5 @@ week9/.idea/
 week9/cmake-build-debug
 week9/CMakeLists.txt
 week9/input.txt
+week9/parseinput.py
+week9/simulateaging.py
