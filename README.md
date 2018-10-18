@@ -47,3 +47,13 @@ _Ruslan Shakirov, B17-2_
 - `ex3.c` - Complete the template
 - `ex4.c` - My own `realloc()`
 - `ex5.c` - Fix code
+
+## Week 8
+- `ex2.c` - Allocate lots of memory
+- `ex4.c` - Allocate lots of memory and print usage
+- `ex5.txt` - Virtual memory essay
+- `ex6.txt` - Another essay
+
+## Week 9
+- `ex1.c` - Aging memory page replacement algorithm simulation
+- `ex2.c` - ???
