@@ -1,4 +1,4 @@
-# All IntelliJ files
+# IntelliJ files
 week*/.idea/
 week*/cmake-build-debug
 week*/CMakeLists.txt
@@ -8,3 +8,6 @@ week*/_*
 
 # Week 9 input file
 week9/input.txt
+
+# Week 10 tmp directory
+week10/tmp
