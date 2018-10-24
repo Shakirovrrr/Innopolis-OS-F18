@@ -1,4 +1,4 @@
-FILEDIR='../week1/_file.txt'
+FILEDIR='../week01/_file.txt'
 printf "Some contents of _file.txt\n" > $FILEDIR
 link $FILEDIR '_ex2.txt' > 'ex2.txt'
 INODENUM=$(ls -i $FILEDIR | awk '{print $1}')
