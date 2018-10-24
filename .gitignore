@@ -7,7 +7,7 @@ week*/CMakeLists.txt
 week*/_*
 
 # Week 9 input file
-week9/input.txt
+week09/input.txt
 
 # Week 10 tmp directory
 week10/tmp
