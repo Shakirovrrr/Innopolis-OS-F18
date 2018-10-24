@@ -40,3 +40,9 @@ week9/CMakeLists.txt
 week9/input.txt
 week9/parseinput.py
 week9/simulateaging.py
+
+# Week 10
+week10/_*
+week10/.idea/
+week10/cmake-build-debug
+week10/CMakeLists.txt
