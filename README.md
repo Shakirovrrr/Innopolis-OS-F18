@@ -57,3 +57,13 @@ _Ruslan Shakirov, B17-2_
 ## Week 9
 - `ex1.c` - Aging memory page replacement algorithm simulation
 - `ex2.c` - ???
+
+## Week 10
+- `ex1.txt` - Check I-nodes
+- `ex2.txt` - All links to `file.txt`
+- `ex3.txt` - Manage permissions
+- `ex4.c` - List all I-nodes with 2+ links
+- `ex4.txt` - `ex4.c` output
+- `ex2.sh` - Bash script for excercise 2
+- `ex3.sh` - Bash script for excercise 3
+- `ex4.sh` - Bash script for excercise 4
