@@ -1,48 +1,10 @@
-# Week 2
-week2/.idea
-week2/cmake-build-debug
-week2/CMakeLists.txt
+# All IntelliJ files
+week*/.idea/
+week*/cmake-build-debug
+week*/CMakeLists.txt
 
-# Week 3
-week3/.idea
-week3/cmake-build-debug
-week3/CMakeLists.txt
+# All files starts with underscore
+week*/_*
 
-# Week 4
-week4/.idea/
-week4/cmake-build-debug
-week4/CMakeLists.txt
-
-# Week 5
-week5/.idea/
-week5/cmake-build-debug
-week5/CMakeLists.txt
-
-# Week 6
-week6/.idea/
-week6/cmake-build-debug
-week6/CMakeLists.txt
-
-# Week 7
-week7/.idea/
-week7/cmake-build-debug
-week7/CMakeLists.txt
-
-# Week 8
-week8/.idea/
-week8/cmake-build-debug
-week8/CMakeLists.txt
-
-# Week 9
-week9/.idea/
-week9/cmake-build-debug
-week9/CMakeLists.txt
+# Week 9 input file
 week9/input.txt
-week9/parseinput.py
-week9/simulateaging.py
-
-# Week 10
-week10/_*
-week10/.idea/
-week10/cmake-build-debug
-week10/CMakeLists.txt
