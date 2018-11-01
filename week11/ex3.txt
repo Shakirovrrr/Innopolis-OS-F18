@@ -1,0 +1,26 @@
+Program 1:
+<output begins>
+Hello
+Hello
+
+<output ends>
+
+Program 2:
+<output begins>
+Hello
+
+
+
+<output ends>
+
+Program 1:
+"Hello" being put in buffer -> process forks -> both processes have same buffer -> one process encounters the new line character and flushes its buffer with "Hello" and puts new line to output -> other process also flushes its buffer with "Hello" and puts new line. -> both terminates.
+
+Program 2:
+"Hello\n" being put in buffer and flushed because of new line character -> process forks -> one process puts new line -> other process puts new line -> both terminates.
+
+The main reason is the buffering behaviour of printf() (or stdout).
+It looks like stdout is line-buffered (flushes buffer when new line character encountered) as it is determined to refer to interactive device. In other cases stdout has to be fully-buffered.
+
+According to ISO C99 section 7.19.3/7:
+"<...> the standard input and standard output streams are fully buffered if and only if the stream can be determined not to refer to an interactive device."
