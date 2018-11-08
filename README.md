@@ -3,7 +3,6 @@
 _Ruslan Shakirov, B17-2_
 
 ## Week 1
-
 - `ex1.txt` - directories contains `gcc` in names
 - `ex2.txt` - history
 - `ex3.sh` - Date, sleep, date
@@ -11,7 +10,6 @@ _Ruslan Shakirov, B17-2_
 - `ex4` - Compiled hello world
 
 ## Week 2
-
 - `ex1.c` - number types sizes
 - `ex2.c` - string reverser
 - `ex3.c` - triangle printer
@@ -64,6 +62,15 @@ _Ruslan Shakirov, B17-2_
 - `ex3.txt` - Manage permissions
 - `ex4.c` - List all I-nodes with 2+ links
 - `ex4.txt` - `ex4.c` output
-- `ex2.sh` - Bash script for excercise 2
-- `ex3.sh` - Bash script for excercise 3
-- `ex4.sh` - Bash script for excercise 4
+
+## Week 11
+- `ex1.c` - Modify file by mapping it
+- `ex2.c` - Playing with `printf` and `sleep`
+- `ex3.c` - Playing with `printf` and `fork`
+- `ex3.txt` - Excercise 3 explanation
+- `ex4.c` - Memory-mapped copy
+
+## Week 12
+- `ex1.c` - Random string from `/dev/random`
+- `ex2.c` - `tee` implementation
+- `ex3.c` - Playing with `copy.c`
