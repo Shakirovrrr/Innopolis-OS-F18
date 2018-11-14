@@ -14,7 +14,8 @@ int main() {
 
 	size_t length = 0;
 	ssize_t charsRead = getline(&strBuf, &length, inputFile);
-	printf("N chars: %d, length: %d, line: %s", charsRead, length, strBuf);
+
+	printf("N chars: %ld, length: %lu, line: %s", charsRead, length, strBuf);
 
 	free(strBuf);
 	return 0;
