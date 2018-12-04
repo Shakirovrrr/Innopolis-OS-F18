@@ -6,19 +6,20 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <limits.h>
+#include <malloc.h>
 
-#define FIRST_BIT_ONLY UINT_MAX ^ ((unsigned int) INT_MAX)
+#define FIRST_BIT_ONLY (UINT_MAX ^ ((unsigned int) INT_MAX))
 
-typedef struct PageFrame {
+typedef struct __PageEntry {
 	unsigned int pageRef;
 	unsigned int age;
 	unsigned char R;
-} PageFrame;
+} PageEntry;
 
 static FILE *inputFile;
 unsigned int refCount, hitCount, nFrames;
-PageFrame *frames;
+PageEntry *frames;
 
 unsigned int nextRef() {
 	unsigned int ref;
@@ -30,8 +31,8 @@ unsigned int nextRef() {
 	return ref;
 }
 
-PageFrame makeEmptyFrame() {
-	PageFrame frame;
+PageEntry createEmptyEntry() {
+	PageEntry frame;
 	frame.pageRef = 0;
 	frame.age = 0;
 	frame.R = 0;
@@ -39,8 +40,8 @@ PageFrame makeEmptyFrame() {
 	return frame;
 }
 
-PageFrame makeFrame(unsigned int pageRef) {
-	PageFrame newFrame;
+PageEntry createEntry(unsigned int pageRef) {
+	PageEntry newFrame;
 	newFrame.pageRef = pageRef;
 	newFrame.age = FIRST_BIT_ONLY; // Sets leftmost bit to 1 and other to 0.
 	newFrame.R = 1;
@@ -48,20 +49,20 @@ PageFrame makeFrame(unsigned int pageRef) {
 	return newFrame;
 }
 
-PageFrame *initFrames(unsigned int nFrames) {
-	PageFrame *frames = (PageFrame *) calloc(nFrames, sizeof(PageFrame));
+PageEntry *initEntries(unsigned int nFrames) {
+	PageEntry *frames = (PageEntry *) calloc(nFrames, sizeof(PageEntry));
 	for (int i = 0; i < nFrames; ++i) {
-		frames[i] = makeEmptyFrame();
+		frames[i] = createEmptyEntry();
 	}
 
 	return frames;
 }
 
-char isEmptyFrame(PageFrame frame) {
+char isEmptyEntry(PageEntry frame) {
 	return frame.pageRef == 0 && frame.age == 0;
 }
 
-PageFrame *getFrameByRef(unsigned int ref, PageFrame *fromFrames) {
+PageEntry *getEntryByRef(unsigned int ref, PageEntry *fromFrames) {
 	for (int i = 0; i < nFrames; ++i) {
 		if (fromFrames[i].pageRef == ref) {
 			return fromFrames + i;
@@ -71,9 +72,9 @@ PageFrame *getFrameByRef(unsigned int ref, PageFrame *fromFrames) {
 	return NULL;
 }
 
-PageFrame *getFreeFrame(PageFrame *fromFrames) {
+PageEntry *getFreeEntry(PageEntry *fromFrames) {
 	for (int i = 0; i < nFrames; ++i) {
-		if (isEmptyFrame(fromFrames[i])) {
+		if (isEmptyEntry(fromFrames[i])) {
 			return fromFrames + i;
 		}
 	}
@@ -81,7 +82,7 @@ PageFrame *getFreeFrame(PageFrame *fromFrames) {
 	return NULL;
 }
 
-PageFrame *getOldestFrame(PageFrame *fromFrames) {
+PageEntry *getOldestEntry(PageEntry *fromFrames) {
 	unsigned int minAge = UINT_MAX;
 	int iMin = 0;
 
@@ -96,10 +97,8 @@ PageFrame *getOldestFrame(PageFrame *fromFrames) {
 }
 
 void insertPage(unsigned int pageRef) {
-	static unsigned int minCount, maxCount;
-
 	// Try to fetch frame by ref
-	PageFrame *currentFrame = getFrameByRef(pageRef, frames);
+	PageEntry *currentFrame = getEntryByRef(pageRef, frames);
 	if (currentFrame) {
 		currentFrame->R = 1;
 		hitCount++;
@@ -108,14 +107,14 @@ void insertPage(unsigned int pageRef) {
 	}
 
 	// If not found, try to fetch free frame
-	currentFrame = getFreeFrame(frames);
+	currentFrame = getFreeEntry(frames);
 	if (!currentFrame) {
 		// If there are no more free frames
 		// fetch oldest
-		currentFrame = getOldestFrame(frames);
+		currentFrame = getOldestEntry(frames);
 	}
 	if (currentFrame) {
-		*currentFrame = makeFrame(pageRef);
+		*currentFrame = createEntry(pageRef);
 		refCount++;
 		return;
 	}
@@ -135,7 +134,7 @@ int main() {
 	hitCount = 0;
 
 	scanf("%d", &nFrames);
-	frames = initFrames(nFrames);
+	frames = initEntries(nFrames);
 
 	inputFile = fopen("input.txt", "r");
 	if (!inputFile) {
